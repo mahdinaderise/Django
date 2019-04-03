@@ -1,0 +1,13 @@
+{% extends 'blog/base.html'%}
+
+{% block title %} {{post.seo_title}}{% endblock %}
+
+{% block content %}
+  
+    <h2>{{ Posts.title }}</h2>
+    <p>written by{{Posts.author}} on {{Posts.published}} </p>
+    <hr>
+    {{Posts.content|linebreaks}}
+  
+
+{% endblock %}

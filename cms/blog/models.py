@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from core.urlresolvers import reverse
+
 # Create your models here.
 class post(models.Model):
     STATUS_CHOICES=(
@@ -19,6 +21,9 @@ class post(models.Model):
     updated=models.DateTimeField(auto_now=True)
         
     status=models.CharField(max_length=9,choices=STATUS_CHOICES,default="Draft")
+    def get_absolute_url(self):
+        return reverse("blog:post_detail", kwargs={"slug": self.slug})
+    
     def __str__(self):
         return self.title
     
